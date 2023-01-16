@@ -4,13 +4,19 @@ import { useCount } from '../../hooks/useCount';
 import classnames from 'classnames';
 
 import styles from './styles.module.css';
+import { useSelector } from '../../customStore/hooks/useSelector';
+import { useDispatch } from '../../customStore/hooks/useDispatch';
 
 const MAX_DISH_COUNT = 6;
 
 export const Dish = ({ dish }) => {
-  const { count, increment, decrement } = useCount({
-    max: MAX_DISH_COUNT,
-  });
+  // const { count, increment, decrement } = useCount({
+  //   max: MAX_DISH_COUNT,
+  // });
+  const count = useSelector((state) => state.cart[dish.name] || 0);
+  const dispatch = useDispatch();
+  const decrement = () => dispatch({ type: 'removeDish', payload: dish.name });
+  const increment = () => dispatch({ type: 'addDish', payload: dish.name });
 
   if (!dish) {
     return null;
