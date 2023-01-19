@@ -42,8 +42,6 @@ const reducer = (state, action) => {
 export const NewReviewForm = ({}) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
-  console.log(formValue);
-
   return (
     <div>
       <div>

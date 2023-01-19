@@ -1,23 +1,21 @@
-import { restaurants } from './constants/fixtures';
-import { Restaurant } from './components/Restaurant/Restaurant';
 import React, { useState } from 'react';
 import { Tabs } from './components/Tabs/Tabs';
-import { Provider } from './customStore/components/Provider/Provider';
 import { store } from './store';
 import { Cart } from './components/Cart/Cart';
+import { Provider } from 'react-redux';
+import { Restaurant } from './components/Restaurant/Restaurant';
 
 export const App = () => {
-  const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
+  const [activeRestaurantId, setActiveRestaurantId] = useState();
 
   return (
     <Provider store={store}>
       <div>
         <Tabs
-          onTabClick={setActiveRestaurantIndex}
-          items={restaurants.map(({ name }) => name)}
-          activeIndex={activeRestaurantIndex}
+          onTabClick={setActiveRestaurantId}
+          activeId={activeRestaurantId}
         />
-        <Restaurant restaurant={restaurants[activeRestaurantIndex]} />
+        {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
         <Cart />
       </div>
     </Provider>

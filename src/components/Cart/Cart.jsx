@@ -1,14 +1,26 @@
-import { useSelector } from '../../customStore/hooks/useSelector';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../../store/modules/cart/actions';
+import { selectCartDishIds } from '../../store/modules/cart/selectors';
+import { Dish } from '../Dish/Dish';
 
 export const Cart = () => {
-  const cart = useSelector((state) => state.cart);
+  // const dishIds = useSelector(state => selectCartDishIds(state));
+  const dishIds = useSelector(selectCartDishIds);
+  const dispatch = useDispatch();
+
   return (
     <div>
-      {Object.entries(cart).map(([name, count]) => (
+      <h2>Cart</h2>
+      {dishIds.length > 0 ? (
         <div>
-          {name} : {count}
+          {dishIds.map((dishId) => (
+            <Dish dishId={dishId} />
+          ))}
+          <button onClick={() => dispatch(clearCart())}>Clear</button>
         </div>
-      ))}
+      ) : (
+        <span>Empty</span>
+      )}
     </div>
   );
 };
