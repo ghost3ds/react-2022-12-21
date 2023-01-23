@@ -12,6 +12,7 @@ export const Dish = ({ dishId }) => {
   const count = useSelector((state) =>
     selectDishCountByName(state, { dishId })
   );
+
   const dispatch = useDispatch();
 
   if (!dish) {
