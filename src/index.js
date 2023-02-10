@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Restaurant from './components/Restaurant/Restaurant';
+
+import { restaurants } from './constants/fixtures';
 
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement('div', {
-    children: [
-        React.createElement('span', { children: 'Hello' }),
-        React.createElement('span', { children: ' ' }),
-        React.createElement('span', { children: 'Students' }),
-    ]
-}));
 
+// const restaurant = restaurants[0];
+
+root.render(
+  <div>
+    {restaurants.map(({ name, menu, reviews }) => (
+      <Restaurant name={name} menu={menu} reviews={reviews} />
+    ))}
+  </div>,
+);
