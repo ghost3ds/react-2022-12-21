@@ -10,7 +10,7 @@ const Menu = ({ menu }) => {
 
         {menu.map((dish) => (
           <li>
-            <Dish name={dish.name} price={dish.price} />
+            <Dish dish={dish} />
           </li>
         ))}
       </ul>
