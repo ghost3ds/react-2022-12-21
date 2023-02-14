@@ -1,17 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
+import { useCount } from '../../hooks/useCount';
 import Button from '../Button/Button';
 import Ingredients from '../Ingredients/Ingredients';
 
 const Dish = ({ dish }) => {
-  const [count, setCount] = useState(0);
+  const { count, increment, decrement } = useCount();
   return (
     <div>
-      <Button onClick={() => setCount(count - 1)} disabled={count === 0}>
+      <Button onClick={decrement} disabled={count === 0}>
         -
       </Button>
       {count}
-      <Button onClick={() => setCount(count + 1)} disabled={count === 5}>
+      <Button onClick={increment} disabled={count === 5}>
         +
       </Button>
       {`${dish.name}, ${dish.price} USD`}

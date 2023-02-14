@@ -1,15 +1,14 @@
 import React from 'react';
-import Button from '../Button/Button';
 import Menu from '../Menu/Menu';
 import Reviews from '../Reviews/Reviews';
 
-const Restaurant = ({ name, menu, reviews }) => {
+const Restaurant = ({ restaurant }) => {
   return (
     <div>
-      <h1>{name}</h1>
+      <h1>{restaurant.name}</h1>
       <div>
-        <Menu menu={menu} />
-        <Reviews reviews={reviews} />
+        <Menu menu={restaurant.menu} />
+        <Reviews reviews={restaurant.reviews} />
       </div>
     </div>
   );
