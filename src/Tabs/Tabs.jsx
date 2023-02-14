@@ -5,7 +5,11 @@ const Tabs = ({ restaurants, onTabClick, activeIndex }) => {
   return (
     <div>
       {restaurants.map(({ name }, index) => (
-        <Tab name={name} onClick={() => onTabClick(index)} isActive={index === activeIndex} />
+        <Tab
+          name={name}
+          onClick={() => onTabClick(index)}
+          isActive={index === activeIndex}
+        />
       ))}
     </div>
   );

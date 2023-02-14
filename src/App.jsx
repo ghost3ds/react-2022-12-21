@@ -7,7 +7,11 @@ const App = () => {
   const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
   return (
     <div>
-      <Tabs restaurants={restaurants} onTabClick={setActiveRestaurantIndex} activeIndex={activeRestaurantIndex} />
+      <Tabs
+        restaurants={restaurants}
+        onTabClick={setActiveRestaurantIndex}
+        activeIndex={activeRestaurantIndex}
+      />
       <Restaurant restaurant={restaurants[activeRestaurantIndex]} />
     </div>
   );
