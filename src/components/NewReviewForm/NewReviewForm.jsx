@@ -66,7 +66,6 @@ const NewReviewForm = ({}) => {
           type="number"
           onChange={(value) => dispatch({ type: 'changeRating', payload: value })}
         />
-        {console.log(formValue.rating)}
       </div>
     </div>
   );
