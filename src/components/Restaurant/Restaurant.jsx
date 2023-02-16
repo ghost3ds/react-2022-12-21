@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import Menu from '../Menu/Menu';
 import NewReviewForm from '../NewReviewForm/NewReviewForm';
+import Rating from '../Rating/Rating';
 import Reviews from '../Reviews/Reviews';
 
 const Restaurant = ({ restaurant }) => {
@@ -15,7 +16,8 @@ const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h1>{restaurant.name}</h1>
-      {rating}
+      Rating: {rating}
+      <Rating value={rating} />
       <Menu menu={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
       <NewReviewForm />

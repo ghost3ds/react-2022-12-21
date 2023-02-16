@@ -8,7 +8,7 @@ const Reviews = ({ reviews }) => {
       <ul>
         {reviews.map((review) => (
           <li>
-            <Review text={review.text} />
+            <Review text={review.text} rating={review.rating} />
           </li>
         ))}
       </ul>
