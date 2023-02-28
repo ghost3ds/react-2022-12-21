@@ -1,15 +1,26 @@
 import React from 'react';
-import { useSelector } from '../../customStore/hooks/useSelector';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearDish } from '../../store/modules/actions';
+import { selectCart } from '../../store/modules/selectors';
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector(selectCart);
+  const dispatch = useDispatch();
+  const cartEntries = Object.entries(cart);
   return (
     <div>
-      {Object.entries(cart).map(([name, count]) => (
-        <div>
-          {name} : {count}
-        </div>
-      ))}
+      <div>
+        {cartEntries.map(([name, count]) => (
+          <div>
+            {name} : {count}
+          </div>
+        ))}
+        {cartEntries.length > 0 ? (
+          <button onClick={() => dispatch(clearDish())}>Clear</button>
+        ) : (
+          <i>Cart is empty</i>
+        )}
+      </div>
     </div>
   );
 };

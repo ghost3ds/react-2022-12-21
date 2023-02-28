@@ -1,33 +1,8 @@
-import { createStore } from '../customStore/store/store';
+import { combineReducers, createStore } from 'redux';
+import { cartReducer } from './modules/cart';
 
-const rootReducer = (
-  state = {
-    cart: {},
-  },
-  action = {},
-) => {
-  switch (action.type) {
-    case 'addDish': {
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          [action.payload]: (state.cart[action.payload] || 0) + 1,
-        },
-      };
-    }
-    case 'removeDish': {
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          [action.payload]: (state.cart[action.payload] || 1) - 1,
-        },
-      };
-    }
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers({
+  cart: cartReducer,
+});
 
 export const store = createStore(rootReducer);
