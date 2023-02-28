@@ -1,17 +1,22 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDish, removeDish } from '../../store/modules/actions';
-import { selectDishCountByName } from '../../store/modules/selectors';
+import { addDish, removeDish } from '../../store/modules/cart/actions';
+import { selectDishCountByName } from '../../store/modules/cart/selectors';
+import { selectDishById } from '../../store/modules/dish/selectors';
 import Button from '../Button/Button';
 import Ingredients from '../Ingredients/Ingredients';
 
-const Dish = ({ dish }) => {
-  const count = useSelector((state) =>
-    selectDishCountByName(state, { dishName: dish.name }),
-  );
+const Dish = ({ dishId }) => {
+  const dish = useSelector((state) => selectDishById(state, { dishId }));
+  const count = useSelector((state) => selectDishCountByName(state, { dishId }));
   const dispatch = useDispatch();
-  const decrement = () => dispatch(removeDish(dish.name));
-  const increment = () => dispatch(addDish(dish.name));
+
+  if (!dish) {
+    return null;
+  }
+
+  const decrement = () => dispatch(removeDish(dishId));
+  const increment = () => dispatch(addDish(dishId));
   return (
     <div>
       <Button onClick={decrement} disabled={count === 0}>

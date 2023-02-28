@@ -1,4 +1,4 @@
-import { CART_ACTIONS } from './actions';
+import { CART_ACTIONS } from '../cart/actions';
 
 export const cartReducer = (state = {}, action) => {
   switch (action.type) {

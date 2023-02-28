@@ -1,10 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
 import Button from '../Button/Button';
 
-const Tab = ({ name, onClick, isActive }) => {
+const Tab = ({ restaurantId, onClick, isActive }) => {
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, { restaurantId }),
+  );
   return (
     <Button onClick={onClick} disabled={isActive}>
-      {name}
+      {restaurant.name}
     </Button>
   );
 };
