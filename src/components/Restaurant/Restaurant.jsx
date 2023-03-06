@@ -25,7 +25,7 @@ const Restaurant = ({ restaurantId }) => {
       {/* Rating: {rating} */}
       {/* <Rating value={rating} /> */}
       <Menu restaurantId={restaurantId} />
-      {/* <Reviews reviews={restaurant.reviews} /> */}
+      <Reviews restaurantId={restaurantId} />
       {/* <NewReviewForm /> */}
     </div>
   );

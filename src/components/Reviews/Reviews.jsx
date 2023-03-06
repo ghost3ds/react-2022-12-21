@@ -1,14 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectRestaurantReviewById } from '../../store/modules/restaurant/selectors';
 import Review from '../Review/Review';
 
-const Reviews = ({ reviews }) => {
+const Reviews = ({ restaurantId }) => {
+  const reviewIds = useSelector((state) =>
+    selectRestaurantReviewById(state, { restaurantId }),
+  );
   return (
     <div>
       <h2>Reviews:</h2>
       <ul>
-        {reviews.map((review) => (
+        {reviewIds.map((id) => (
           <li>
-            <Review text={review.text} rating={review.rating} />
+            <Review reviewId={id} />
           </li>
         ))}
       </ul>
