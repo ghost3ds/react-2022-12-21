@@ -1,9 +1,7 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
 import Menu from '../Menu/Menu';
-import NewReviewForm from '../NewReviewForm/NewReviewForm';
-import Rating from '../Rating/Rating';
 import Reviews from '../Reviews/Reviews';
 
 const Restaurant = ({ restaurantId }) => {
