@@ -1,7 +1,9 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { logger } from './middleware/logger';
 import { cartReducer } from './modules/cart/cart';
 import { dishReducer } from './modules/dish';
 import { restaurantReducer } from './modules/restaurant';
+import { loadRestaurantsIfNotExist } from './modules/restaurant/middleware/loadRestaurantsIfNotExist';
 import { reviewReducer } from './modules/review';
 import { userReducer } from './modules/user';
 
@@ -13,4 +15,7 @@ const rootReducer = combineReducers({
   user: userReducer,
 });
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(logger, loadRestaurantsIfNotExist),
+);

@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
-import Cart from './components/Cart/Cart';
-import Restaurant from './components/Restaurant/Restaurant';
-import Tabs from './components/Tabs/Tabs';
+import React from 'react';
+
 import { Provider } from 'react-redux';
+import { RestaurantsPage } from './pages/Restaurants/RestaurantsPage';
 import { store } from './store';
 
 const App = () => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState();
-
   return (
     <Provider store={store}>
-      <div>
-        <Tabs onTabClick={setActiveRestaurantId} activeId={activeRestaurantId} />
-        {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
-        <Cart />
-      </div>
+      <RestaurantsPage />
     </Provider>
   );
 };
